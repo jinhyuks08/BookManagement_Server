@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/com/cjon/book/controller/BookInsertServlet.java=UTF-8
+encoding//src/com/cjon/book/controller/BookListServlet.java=UTF-8
+encoding//src/com/cjon/book/controller/BookLoginServlet.java=UTF-8
+encoding//src/com/cjon/book/controller/BookUpdateServlet.java=UTF-8
+encoding//src/com/cjon/book/dao/BookDAO.java=UTF-8
+encoding//src/com/cjon/book/service/BookService.java=UTF-8
