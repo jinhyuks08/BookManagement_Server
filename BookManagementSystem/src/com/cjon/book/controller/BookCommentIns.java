@@ -24,18 +24,18 @@ public class BookCommentIns extends HttpServlet {
 		String bisbn = request.getParameter("bisbn");
 		String ctitle = request.getParameter("ctitle");
 		String cauthor = request.getParameter("cauthor");
-		String cdate = "now()";
 		String ctext = request.getParameter("ctext");
-
+		
 		String callback = request.getParameter("callback");
 
 		BookService service = new BookService();
-		boolean result = service.cinsert(bisbn, ctitle, cauthor, cdate, ctext);
+		boolean result = service.cinsert(bisbn, ctitle, cauthor, ctext);
 		response.setContentType("text/plain; charset=utf8");
 		PrintWriter out = response.getWriter();
 		out.println(callback + "(" + result + ")");
 		out.flush();
-		out.close();	}
+		out.close();
+		}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

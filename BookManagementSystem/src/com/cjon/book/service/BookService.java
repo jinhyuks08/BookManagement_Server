@@ -55,9 +55,9 @@ public class BookService {
 		 return result;
 	 }
 	 
-	 public boolean cinsert(String bisbn, String ctitle, String cauthor, String cdate, String ctext){
+	 public boolean cinsert(String bisbn, String ctitle, String cauthor, String ctext){
 		 BookDAO dao = new BookDAO();
-		 boolean result = dao.cinsert(bisbn, ctitle, cauthor, cdate, ctext);
+		 boolean result = dao.cinsert(bisbn, ctitle, cauthor, ctext);
 		 return result;
 	 }
 }

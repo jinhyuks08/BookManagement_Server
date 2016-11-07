@@ -238,15 +238,15 @@ public class BookDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, isbn);
 			rs = pstmt.executeQuery();
-
-			JSONObject obj = null;
+			JSONArray arr = new JSONArray();
 			while (rs.next()) {
-				obj = new JSONObject();
+				JSONObject obj = new JSONObject();
 				obj.put("id", rs.getString("cid"));
 				obj.put("text", rs.getString("ctext"));
 				obj.put("date", rs.getString("cdate"));
+				arr.add(obj);
 			}
-			result = obj.toJSONString();
+			result = arr.toJSONString();
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
@@ -257,7 +257,7 @@ public class BookDAO {
 		return result;
 	}
 	
-	public boolean cinsert(String bisbn, String ctitle, String cauthor, String cdate, String ctext) {
+	public boolean cinsert(String bisbn, String ctitle, String cauthor, String ctext) {
 
 		Connection con = DBTemplate.getConnection();
 		PreparedStatement pstmt = null;
@@ -265,14 +265,12 @@ public class BookDAO {
 		boolean result = false;
 
 		try {
-			String sql = "insert into book_comment (bisbn,ctitle,cauthor,cdate,ctext) value (?,?,?,?,?)";
+			String sql = "insert into book_comment(bisbn,ctitle,cauthor,cdate,ctext) values (?,?,?,now(),?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bisbn);
 			pstmt.setString(2, ctitle);
 			pstmt.setString(3, cauthor);
-			pstmt.setString(4, cdate);
-			pstmt.setString(5, ctext);
-			rs = pstmt.executeQuery();
+			pstmt.setString(4, ctext);
 
 			int count = pstmt.executeUpdate();
 			// 결과값은 영향을 받은 레코드의 수
@@ -291,7 +289,6 @@ public class BookDAO {
 			DBTemplate.close(pstmt);
 			DBTemplate.close(con);
 		}
-
 		return result;
 	}
 }

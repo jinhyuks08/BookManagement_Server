@@ -21,7 +21,7 @@ public class BookCommentList extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String isbn = request.getParameter("isbn");
+		String isbn = request.getParameter("bisbn");
 		String callback = request.getParameter("callback");
 
 		BookService service = new BookService();
